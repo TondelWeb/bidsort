@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource-variable/ibm-plex-sans/wght.css';
+
+@theme {
+  --color-vellum: #e8edf1;
+  --color-sheet: #ffffff;
+  --color-ink: #13243b;
+  --color-slate: #4e6178;
+  --color-rule: #b5c3d1;
+  --color-rule-soft: #d5dee6;
+  --color-flag: #ff6b1a;
+  --color-flag-ink: #b8400a;
+  --color-flag-wash: #fff1e8;
+
+  --font-display: 'Archivo Variable', 'Arial Narrow', Arial, sans-serif;
+  --font-body: 'IBM Plex Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --container-page: 75rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--color-vellum);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  @media (min-width: 1024px) {
+    body { font-size: 1.125rem; }
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  a { text-underline-offset: 0.2em; }
+  :focus-visible {
+    outline: 3px solid var(--color-flag);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .page-x {
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 768px) {
+    .page-x { padding-inline: 2rem; }
+  }
+
+  /* Signage headline: condensed, heavy. */
+  .sign {
+    font-family: var(--font-display);
+    font-stretch: 72%;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 4px;
+    background: var(--color-flag);
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-weight: 750;
+    font-size: 1.0625rem;
+    text-decoration: none;
+    box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.18);
+    transition: transform 120ms ease, background-color 120ms ease;
+  }
+  .btn-primary:hover { background: #ff7d36; }
+  .btn-primary:active { transform: translateY(1px); }
+
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* Faint blueprint grid used behind the hero and demo. */
+  .grid-paper {
+    background-image:
+      linear-gradient(to right, rgb(181 195 209 / 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(181 195 209 / 0.35) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}

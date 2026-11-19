@@ -1,0 +1,40 @@
+---
+// Tally form embed. Until TALLY_FORM_ID is set in src/config.ts it shows the questions as a preview.
+import { TALLY_FORM_ID } from '../config';
+const src = `https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`;
+---
+
+{
+  TALLY_FORM_ID ? (
+    <div class="rounded-lg border border-rule bg-sheet p-4 md:p-6">
+      <iframe data-tally-src={src} loading="lazy" width="100%" height="560" title="BidSort interest form" class="w-full border-0" />
+    </div>
+  ) : (
+    <div class="rounded-lg border border-dashed border-rule bg-sheet p-5 md:p-7">
+      <p class="mb-4 font-semibold">The form opens here soon. These are the questions it will ask:</p>
+      <ol class="grid list-decimal gap-2 pl-5">
+        <li>How many hours a week do you spend finding public jobs to bid?</li>
+        <li>What trade do you bid, and where in NC?</li>
+        <li>If BidSort covered your trade and area, what would you do?</li>
+        <li>Your email, if you want updates or a spot in the pilot (optional).</li>
+      </ol>
+    </div>
+  )
+}
+
+<script>
+  // Pass ?src=calls (or any value) from the page URL to Tally's hidden "source" field,
+  // then load Tally's script, which sizes the iframe to the form.
+  const frame = document.querySelector<HTMLIFrameElement>('iframe[data-tally-src]');
+  if (frame) {
+    const url = new URL(frame.dataset.tallySrc!);
+    const source = new URLSearchParams(location.search).get('src');
+    url.searchParams.set('source', source ?? 'direct');
+    frame.dataset.tallySrc = url.toString(); // Tally's script reads this attribute
+    frame.src = url.toString();
+    const s = document.createElement('script');
+    s.src = 'https://tally.so/widgets/embed.js';
+    s.async = true;
+    document.body.appendChild(s);
+  }
+</script>

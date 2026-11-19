@@ -1,0 +1,21 @@
+---
+// Full-screen demo for recording the explainer video. No site header or footer.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BidSortDemo from '../components/BidSortDemo.astro';
+
+const home = import.meta.env.BASE_URL;
+const formHref = `${home.replace(/\/?$/, '/')}#tell-us`;
+---
+
+<BaseLayout title="BidSort demo" description="Try the BidSort prototype: pick your trade, see only your public bids, turn on an alert.">
+  <main class="grid-paper min-h-dvh px-4 py-6 md:py-10">
+    <h1 class="sr-only">BidSort clickable demo</h1>
+    <div class="mx-auto w-full max-w-[52rem]">
+      <BidSortDemo standalone formHref={formHref} />
+      <p class="mt-4 text-sm text-slate">
+        Press <kbd class="rounded border border-rule bg-sheet px-1.5 font-semibold">R</kbd> to restart.{' '}
+        <a class="font-semibold underline" href={home}>Back to the BidSort page</a>
+      </p>
+    </div>
+  </main>
+</BaseLayout>

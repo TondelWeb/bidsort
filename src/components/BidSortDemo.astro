@@ -1,0 +1,43 @@
+---
+// Clickable BidSort prototype. All logic lives in src/scripts/demo.ts.
+import '../styles/demo.css';
+
+interface Props {
+  standalone?: boolean;
+  formHref?: string;
+}
+const { standalone = false, formHref = '#tell-us' } = Astro.props;
+---
+
+<div class="bsd" data-bsd data-standalone={String(standalone)} data-form-href={formHref} data-step="welcome">
+  <div class="bsd-bar">
+    <span class="bsd-brand">
+      <svg viewBox="0 0 32 32" aria-hidden="true" class="bsd-logo"
+        ><rect width="32" height="32" rx="6" fill="#13243B"></rect><rect x="7" y="8" width="18" height="3" rx="1.5" fill="#5B7290"
+        ></rect><rect x="7" y="14.5" width="18" height="3" rx="1.5" fill="#FF6B1A"></rect><rect
+          x="7"
+          y="21"
+          width="18"
+          height="3"
+          rx="1.5"
+          fill="#5B7290"></rect></svg
+      >
+      BidSort
+    </span>
+    <span class="bsd-sample">Sample data</span>
+    <button type="button" class="bsd-restart" data-restart aria-keyshortcuts="R">
+      <svg viewBox="0 0 24 24" aria-hidden="true"
+        ><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg
+      >
+      Restart<span class="bsd-hide-sm"> demo</span>
+    </button>
+  </div>
+  <div class="bsd-view" data-view aria-live="off">
+    <noscript><p class="bsd-pad">The demo needs JavaScript turned on.</p></noscript>
+  </div>
+</div>
+
+<script>
+  import { mountDemo } from '../scripts/demo';
+  document.querySelectorAll<HTMLElement>('[data-bsd]').forEach(mountDemo);
+</script>

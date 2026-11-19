@@ -1,0 +1,45 @@
+---
+// Click-to-load YouTube player. Until VIDEO_ID is set in src/config.ts it shows a placeholder.
+import { VIDEO_ID } from '../config';
+const poster = VIDEO_ID ? `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg` : '';
+---
+
+<div class="video aspect-video w-full overflow-hidden rounded-lg border border-rule bg-ink text-white">
+  {
+    VIDEO_ID ? (
+      <button
+        type="button"
+        class="group relative block h-full w-full cursor-pointer"
+        data-video={VIDEO_ID}
+        aria-label="Play the 90-second BidSort video"
+      >
+        <img src={poster} alt="" class="h-full w-full object-cover opacity-85" loading="lazy" decoding="async" width="480" height="360" />
+        <span class="absolute inset-0 grid place-items-center">
+          <span class="grid size-16 place-items-center rounded-full bg-flag text-ink shadow-lg transition-transform group-hover:scale-105">
+            <svg viewBox="0 0 24 24" class="ml-1 size-7" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" /></svg>
+          </span>
+        </span>
+      </button>
+    ) : (
+      <div class="flex h-full flex-col justify-end gap-1 p-5">
+        <p class="sign text-2xl leading-none">The 90-second video is coming soon.</p>
+        <p class="text-[0.95rem] text-[#c9d4e0]">For now, try the demo yourself. It's the same walkthrough.</p>
+      </div>
+    )
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-video]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(btn.dataset.video!)}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.title = 'BidSort explainer video';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.className = 'h-full w-full';
+      btn.replaceWith(iframe);
+      iframe.focus();
+    });
+  });
+</script>

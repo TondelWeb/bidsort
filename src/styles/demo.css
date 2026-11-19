@@ -1,0 +1,354 @@
+/* BidSort demo. Classes are prefixed bsd- because the markup is generated at runtime. */
+.bsd {
+  --r: 4px;
+  background: var(--color-sheet);
+  border: 1px solid var(--color-rule);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-ink);
+  box-shadow: 0 1px 0 var(--color-rule), 0 18px 40px -24px rgb(19 36 59 / 0.45);
+}
+.bsd svg {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bsd .bsd-logo { width: 1.4rem; height: 1.4rem; stroke: none; }
+
+.bsd-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem 0.6rem 1rem;
+  background: var(--color-ink);
+  color: #fff;
+}
+.bsd-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+.bsd-sample {
+  font-size: 0.8125rem;
+  color: #c9d4e0;
+  border: 1px solid #3d5373;
+  border-radius: 999px;
+  padding: 0.05rem 0.55rem;
+}
+.bsd-restart {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.25rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--r);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid #3d5373;
+  cursor: pointer;
+}
+.bsd-restart:hover { background: #1f3553; }
+.bsd-sample, .bsd-restart { white-space: nowrap; }
+@media (max-width: 400px) {
+  .bsd-hide-sm { display: none; }
+}
+
+.bsd-view { min-height: 30rem; }
+.bsd-pad { padding: 1.5rem 1.25rem 1.75rem; }
+.bsd-pad-tight { padding-bottom: 0; }
+@media (min-width: 640px) {
+  .bsd-pad { padding: 1.75rem 1.75rem 2rem; }
+}
+
+.bsd-h {
+  font-family: var(--font-display);
+  font-stretch: 85%;
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  outline: none;
+}
+.bsd-h-sm { font-size: 1.3rem; }
+.bsd-h4 {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: 1rem;
+  margin: 1.25rem 0 0.35rem;
+}
+.bsd-sub { color: var(--color-slate); margin-bottom: 1.25rem; max-width: 34rem; }
+.bsd-kicker { color: var(--color-slate); font-size: 0.9rem; margin: 0.75rem 0 0.25rem; }
+.bsd-muted { color: var(--color-slate); }
+.bsd-flagtext { color: var(--color-flag-ink); }
+.bsd-vh {
+  position: absolute !important;
+  width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* Trade chips */
+.bsd-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+.bsd-chip {
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid var(--color-rule);
+  border-radius: var(--r);
+  background: var(--color-sheet);
+  font-weight: 600;
+  cursor: pointer;
+}
+.bsd-chip:hover { border-color: var(--color-ink); }
+.bsd-chip[aria-pressed='true'] {
+  background: var(--color-flag);
+  border-color: var(--color-flag);
+  color: var(--color-ink);
+}
+
+.bsd-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.bsd-area-label { display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 600; }
+.bsd-select select {
+  min-height: 2.75rem;
+  padding: 0.4rem 2rem 0.4rem 0.75rem;
+  border: 1.5px solid var(--color-rule);
+  border-radius: var(--r);
+  background: var(--color-sheet);
+  font: inherit;
+  font-weight: 600;
+}
+
+/* Buttons */
+.bsd-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--r);
+  background: var(--color-flag);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: 1.05rem;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.18);
+}
+.bsd-go:hover { background: #ff7d36; }
+.bsd-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 3rem;
+  padding: 0.6rem 1rem;
+  border: 1.5px solid var(--color-rule);
+  border-radius: var(--r);
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--color-sheet);
+}
+.bsd-ghost:disabled { cursor: not-allowed; color: var(--color-slate); border-style: dashed; }
+.bsd-back, .bsd-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 2.25rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.bsd-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.bsd-error {
+  color: #a3260a;
+  font-weight: 600;
+  margin: -0.5rem 0 1rem;
+}
+
+/* Scan */
+.bsd-scan { display: grid; gap: 0.4rem; margin-top: 1rem; }
+.bsd-scan li { display: flex; align-items: center; gap: 0.6rem; color: var(--color-slate); }
+.bsd-scan li.is-done { color: var(--color-ink); }
+.bsd-scan li.is-done svg { color: var(--color-flag-ink); }
+.bsd-dot {
+  width: 1.1em; height: 1.1em; flex: none;
+  border: 2px solid var(--color-rule); border-radius: 50%;
+}
+
+/* Feed */
+.bsd-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 1rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+.bsd-tabs [role='tab'] {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.9rem;
+  font-weight: 650;
+  color: var(--color-slate);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+}
+.bsd-tabs [aria-selected='true'] { color: var(--color-ink); border-bottom-color: var(--color-flag); }
+.bsd-scroll {
+  max-height: 31rem;
+  overflow-y: auto;
+  padding: 1rem 1.25rem 1.5rem;
+  background: #f6f8fa;
+  overscroll-behavior: contain;
+}
+@media (min-width: 640px) {
+  .bsd-scroll { padding: 1rem 1.75rem 1.75rem; }
+}
+.bsd-cards { display: grid; gap: 0.75rem; }
+.bsd-card {
+  display: grid;
+  gap: 0.35rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.9rem 1rem 0.9rem 1.1rem;
+  background: var(--color-sheet);
+  border: 1px solid var(--color-rule-soft);
+  border-left: 5px solid var(--color-flag);
+  border-radius: var(--r);
+  cursor: pointer;
+}
+.bsd-card:hover { border-color: var(--color-rule); border-left-color: var(--color-flag); background: var(--color-flag-wash); }
+.bsd-card-top { display: flex; justify-content: space-between; gap: 0.75rem; align-items: baseline; }
+.bsd-card-title { font-family: var(--font-display); font-weight: 750; font-size: 1.08rem; line-height: 1.25; }
+.bsd-card-meta { font-size: 0.95rem; }
+.bsd-card-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  align-items: center;
+  font-size: 0.875rem;
+}
+.bsd-src { color: var(--color-slate); }
+.bsd-due {
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 650;
+  color: var(--color-flag-ink);
+}
+.bsd-tag {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--r);
+  background: var(--color-flag-wash);
+  color: #8a3007;
+  border: 1px solid #ffc9a8;
+}
+
+.bsd-rows { border: 1px solid var(--color-rule-soft); border-radius: var(--r); background: var(--color-sheet); }
+.bsd-rows li + li { border-top: 1px solid var(--color-rule-soft); }
+.bsd-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.1rem 0.75rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.55rem 0.8rem 0.55rem 0.9rem;
+  border-left: 5px solid transparent;
+  cursor: pointer;
+  color: var(--color-slate);
+}
+.bsd-row:hover { background: #f1f4f7; }
+.bsd-row.is-match { border-left-color: var(--color-flag); color: var(--color-ink); background: var(--color-flag-wash); }
+.bsd-row-title { font-weight: 600; font-size: 0.95rem; }
+.bsd-row-meta { grid-column: 1; font-size: 0.8125rem; }
+.bsd-row-meta .bsd-muted::before { content: '/ '; }
+.bsd-row-due { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 0.8125rem; white-space: nowrap; }
+.bsd-empty { padding: 1rem 0; }
+
+/* Detail */
+.bsd-facts {
+  display: grid;
+  gap: 0.6rem 1.5rem;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  border-block: 1px solid var(--color-rule-soft);
+}
+@media (min-width: 640px) {
+  .bsd-facts { grid-template-columns: 1fr 1fr; }
+}
+.bsd-facts dt { font-size: 0.8125rem; color: var(--color-slate); }
+.bsd-facts dd { font-weight: 550; }
+.bsd-facts .bsd-due { margin-left: 0.35rem; }
+.bsd-scope { max-width: 38rem; }
+.bsd-specs { display: grid; gap: 0.35rem; }
+.bsd-specs li { padding-left: 0.75rem; border-left: 3px solid var(--color-rule-soft); }
+.bsd-specs li.is-match { border-left-color: var(--color-flag); font-weight: 600; }
+
+/* Alert setup */
+.bsd-field { margin-bottom: 1.25rem; }
+.bsd-field legend { font-weight: 700; margin-bottom: 0.5rem; }
+.bsd-radio {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--color-rule);
+  border-radius: var(--r);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  max-width: 28rem;
+}
+.bsd-radio > span { display: grid; }
+.bsd-radio .bsd-muted { font-size: 0.875rem; }
+.bsd-radio input { margin-top: 0.3rem; width: 1.1rem; height: 1.1rem; accent-color: var(--color-flag-ink); }
+.bsd-radio:has(input:checked) { border-color: var(--color-flag); background: var(--color-flag-wash); }
+.bsd-radio:has(input:focus-visible) { outline: 3px solid var(--color-flag); outline-offset: 2px; }
+
+/* Done */
+.bsd-ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  color: #1d6b3a;
+  margin-bottom: 0.5rem;
+}
+.bsd-phone, .bsd-email {
+  margin-top: 1rem;
+  max-width: 24rem;
+  padding: 1rem;
+  border-radius: 1.25rem;
+  background: #eef1f4;
+  border: 1px solid var(--color-rule-soft);
+}
+.bsd-phone .bsd-muted, .bsd-email .bsd-muted { font-size: 0.8125rem; margin-bottom: 0.5rem; text-align: center; }
+.bsd-bubble {
+  background: var(--color-sheet);
+  border-radius: 1rem 1rem 1rem 0.25rem;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  border: 1px solid var(--color-rule-soft);
+}
+.bsd-email { border-radius: var(--r); background: var(--color-sheet); }
+.bsd-email ul { list-style: disc; padding-left: 1.2rem; margin-top: 0.5rem; display: grid; gap: 0.3rem; }
+.bsd-end { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--color-rule-soft); }
+.bsd-end .bsd-actions { margin-top: 0.75rem; }

@@ -1,0 +1,187 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BidSheet from '../components/BidSheet.astro';
+import BidSortDemo from '../components/BidSortDemo.astro';
+import VideoEmbed from '../components/VideoEmbed.astro';
+import InterestForm from '../components/InterestForm.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const findings = [
+  {
+    lead: 'Hours every week.',
+    text: 'Darnell spends 4 to 5 hours a week checking bid sites for public jobs. Angela spends about 3.',
+  },
+  {
+    lead: 'Alerts send too much.',
+    text: 'Angela signed up for email alerts, but they send so many jobs outside her trade that she still digs through every one.',
+  },
+  {
+    lead: 'They are already trying to fix it.',
+    text: '3 of the 5 people I called check several bid sites every week and have tried other tools.',
+  },
+];
+
+const steps = [
+  {
+    title: 'Pick your trade and area',
+    text: 'For example, concrete within 60 miles of Raleigh. You set it once.',
+  },
+  {
+    title: 'BidSort checks the bid sites daily',
+    text: 'The state eVP, county and city portals, school districts and NCDOT. It reads each bid’s spec sections to see which trades the job needs.',
+  },
+  {
+    title: 'You get only your bids',
+    text: 'One list sorted by due date, plus a text or email when a new one posts.',
+  },
+];
+
+const tryList = [
+  'Pick a trade and press Show my bids.',
+  'Switch to All bids to see what you’d dig through today.',
+  'Open a bid to see its due date, pre-bid meeting and scope.',
+  'Turn on an alert and see the text you’d get.',
+];
+---
+
+<BaseLayout
+  title="BidSort: every public bid in your trade, in one list"
+  description="For NC subcontractors who bid public jobs. Pick your trade once and see only the bids that match, with an alert when a new one posts. Try the demo."
+>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-sheet focus:p-3">Skip to content</a>
+
+  <header class="sticky top-0 z-40 border-b border-rule bg-vellum/95 backdrop-blur">
+    <div class="page-x flex h-16 items-center gap-6">
+      <a href={base} class="flex items-center gap-2 no-underline">
+        <img src={`${base}favicon.svg`} alt="" width="28" height="28" />
+        <span class="sign text-2xl">BidSort</span>
+      </a>
+      <nav aria-label="Page sections" class="ml-auto hidden md:block">
+        <ul class="flex gap-6 font-semibold">
+          <li><a class="hover:underline" href="#how">How it works</a></li>
+          <li><a class="hover:underline" href="#demo">Demo</a></li>
+          <li><a class="hover:underline" href="#tell-us">Tell us</a></li>
+        </ul>
+      </nav>
+      <a href="#demo" class="btn-primary ml-auto min-h-11 px-4 py-2 text-base md:ml-0">Try the Demo</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="grid-paper border-b border-rule">
+      <div class="page-x grid items-center gap-10 py-12 md:py-16 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:py-20">
+        <div>
+          <h1 class="sign text-[2.75rem] leading-[0.95] sm:text-6xl lg:text-[4.5rem]">Every public bid in your trade, in one list.</h1>
+          <p class="mt-6 max-w-[36rem] text-lg">
+            BidSort is for small subcontractors in North Carolina who bid public jobs. Today that means checking a dozen bid sites at
+            night and opening plan sets to see if there’s work for you. With BidSort you pick your trade and area once. It checks the
+            bid sites every day, keeps only the jobs that match your work, and sends you an alert when a new one posts.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href="#demo" class="btn-primary">Try the Demo</a>
+            <a href="#video" class="font-semibold underline">Watch the 90-second video</a>
+          </div>
+        </div>
+        <BidSheet />
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="bg-ink text-white" aria-labelledby="problem-h">
+      <div class="page-x grid gap-8 py-14 md:py-20 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+        <div>
+          <h2 id="problem-h" class="sign text-4xl md:text-5xl">What subcontractors told me</h2>
+          <p class="mt-4 max-w-[30rem] text-[#c9d4e0]">
+            I called five people who bid public work in NC and asked how they find jobs today. Finding bids wasn’t the hard part.
+            Sorting them was.
+          </p>
+        </div>
+        <ul class="divide-y divide-[#2c4263] border-y border-[#2c4263]">
+          {
+            findings.map((f) => (
+              <li class="py-5">
+                <p class="max-w-[38rem]">
+                  <strong class="font-display text-xl font-bold text-flag">{f.lead}</strong> {f.text}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" aria-labelledby="how-h">
+      <div class="page-x py-14 md:py-20">
+        <h2 id="how-h" class="sign text-4xl md:text-5xl">How it works</h2>
+        <ol class="mt-10 grid gap-8 md:grid-cols-3 md:gap-0">
+          {
+            steps.map((s, i) => (
+              <li class="relative pl-14 md:pr-8 md:pl-0 md:pt-16">
+                <span
+                  class="sign absolute top-0 left-0 grid size-11 place-items-center rounded-full border-2 border-ink bg-sheet text-xl"
+                  aria-hidden="true"
+                >
+                  {i + 1}
+                </span>
+                {i < steps.length - 1 && (
+                  <span class="absolute top-[1.35rem] left-14 hidden h-0.5 w-[calc(100%-4rem)] bg-rule md:block" aria-hidden="true" />
+                )}
+                <h3 class="font-display text-xl font-bold">{s.title}</h3>
+                <p class="mt-2 max-w-[22rem] text-slate">{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <!-- Demo + video -->
+    <section id="demo" class="grid-paper border-y border-rule" aria-labelledby="demo-h">
+      <div class="page-x py-14 md:py-20">
+        <h2 id="demo-h" class="sign text-4xl md:text-5xl">Watch it, then try it</h2>
+        <p class="mt-3 max-w-[40rem]">The demo runs on sample bids. Click through it yourself, or watch me walk through it first.</p>
+        <div class="mt-8 grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-start">
+          <div class="order-2 lg:order-1">
+            <BidSortDemo />
+          </div>
+          <div class="order-1 lg:sticky lg:top-24 lg:order-2" id="video">
+            <VideoEmbed />
+            <div class="mt-6 hidden lg:block">
+              <h3 class="font-display text-lg font-bold">Things to try</h3>
+              <ol class="mt-2 grid list-decimal gap-1.5 pl-5 text-[0.98rem]">
+                {tryList.map((t) => <li>{t}</li>)}
+              </ol>
+              <p class="mt-4 text-sm text-slate">
+                Want more room? <a class="font-semibold underline" href={`${base}demo`}>Open the demo full screen</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form -->
+    <section id="tell-us" aria-labelledby="tell-h">
+      <div class="page-x grid gap-8 py-14 md:py-20 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+        <div>
+          <h2 id="tell-h" class="sign text-4xl outline-none md:text-5xl" tabindex="-1">Would you use it?</h2>
+          <p class="mt-4 max-w-[30rem]">
+            Three questions, under a minute. If you bid public jobs in North Carolina, your answers decide whether BidSort gets built,
+            and for which trades first.
+          </p>
+        </div>
+        <InterestForm />
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-rule bg-sheet">
+    <div class="page-x flex flex-col gap-2 py-8 text-sm text-slate md:flex-row md:justify-between">
+      <p>BidSort is a student project testing an idea. It isn’t a live product yet, and the demo uses sample data.</p>
+      <a class="font-semibold text-ink underline" href={`${base}demo`}>Open the demo full screen</a>
+    </div>
+  </footer>
+</BaseLayout>
