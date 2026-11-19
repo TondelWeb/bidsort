@@ -5,21 +5,27 @@
 **Restart:** press **R** (or click **Restart demo**, top right) to go back to the same first screen every time. The "Sample data" label stays visible in the top bar the whole time.
 
 ## Script and timed clicks
-| Time | Click | Say | What appears on screen |
-|---|---|---|---|
-| 0:00–0:05 | Nothing. Mouse still, away from the buttons. | "Small subcontractors can spend hours searching different sites for public construction bids." | "What trade do you bid?" with 8 trade buttons |
-| 0:05–0:10 | Nothing yet. | "BidSort puts North Carolina public bids in one place and filters them by trade." | Same screen |
-| 0:10–0:16 | Click **Concrete** on "trade". Move the mouse over **Within 60 mi** on "area". Click **Show my bids** on "you'll see". | "Pick your trade and area, and you'll see only the bids that match your work." | "Checking 8 bid sites…" for about a second, then **"24 new public bids this week. 6 match Concrete within 60 mi."** and 6 orange-edged cards |
-| 0:16–0:21 | Click the first card, **Sidewalk & ADA ramp replacement, Phase 3**. | "Open one to check the deadline and job details." | Bid due date ("9 days left"), pre-bid meeting, value, scope, spec sections |
-| 0:21–0:28 | Click **Alert me about jobs like this**, then **Text message**, then **Every morning at 6 AM**, then **Turn on alert**. | "Then turn on alerts, so you know when a new bid matches." | The alert setup screen, then "Alert is on" with a text-message preview of 2 new concrete bids |
-| 0:28–0:30 | Nothing. Hold still. | (silence) | The text preview |
+### Voiceover (read straight through)
+> Small subcontractors spend hours searching different websites for public construction bids, and many of the bids they find don't even match their trade.
+>
+> BidSort puts North Carolina public bids in one place.
+>
+> Pick your trade and area, and it filters out the rest, so you only see bids that match your work.
+>
+> Then it sends you an alert when a new bid matches, so you never miss one.
 
-About 65 words, so say it at a calm, steady pace. Running a second or two over 30 is fine; trim any dead air at the start and end afterwards.
+### Timed clicks
+| Time | Part | Click | Say | What appears on screen |
+|---|---|---|---|---|
+| 0:00–0:09 | Problem | Nothing. Mouse still. | "Small subcontractors spend hours searching different websites for public construction bids, and many of the bids they find don't even match their trade." | "What trade do you bid?" with 8 trade buttons |
+| 0:09–0:12 | Solution | Nothing yet. | "BidSort puts North Carolina public bids in one place." | Same screen |
+| 0:12–0:20 | Pick a trade → matching bids | Click **Concrete** on "trade". Hover over **Within 60 mi** on "area". Click **Show my bids** on "filters out the rest". On "match your work", click the first card (**Sidewalk & ADA ramp replacement**). | "Pick your trade and area, and it filters out the rest, so you only see bids that match your work." | "Checking 8 bid sites…", then **"24 new public bids this week. 6 match Concrete within 60 mi."** and 6 orange-edged cards, then the bid's details |
+| 0:20–0:28 | Alert preview | Click **Alert me about jobs like this**, then **Text message**, then **Every morning at 6 AM**, then **Turn on alert**. | "Then it sends you an alert when a new bid matches, so you never miss one." | Alert setup, then "Alert is on" with a text-message preview of 2 new concrete bids |
+| 0:28–0:30 | End | Nothing. Hold still. | (silence) | The text preview |
 
-Changes from your draft voiceover, made to match the screen:
-- Added "only" ("only the bids that match"), because the screen shows 6 of 24.
-- Added a comma before "so". The wording is otherwise unchanged.
-- "Area" on screen is a distance around Raleigh ("Within 60 mi of Raleigh, NC"), so hover over it instead of clicking.
+About 65 words, so say it at a calm, steady pace. A second or two over 30 is fine; trim dead air at the start and end afterwards.
+
+Why you click a bid card: the demo's alert button sits on the bid details screen. Click the card at the end of the "match your work" line without stopping, so the alert line starts right on that screen.
 
 ## Set up the screen (once)
 1. Open Chrome and drag its window onto your **1920×1080 monitor** (the second screen, not the 2560 one).
