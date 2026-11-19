@@ -11,7 +11,7 @@ const poster = VIDEO_ID ? `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg` : '
         type="button"
         class="group relative block h-full w-full cursor-pointer"
         data-video={VIDEO_ID}
-        aria-label="Play the 90-second BidSort video"
+        aria-label="Play the 30-second BidSort video"
       >
         <img src={poster} alt="" class="h-full w-full object-cover opacity-85" loading="lazy" decoding="async" width="480" height="360" />
         <span class="absolute inset-0 grid place-items-center">
@@ -22,7 +22,7 @@ const poster = VIDEO_ID ? `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg` : '
       </button>
     ) : (
       <div class="flex h-full flex-col justify-end gap-1 p-5">
-        <p class="sign text-2xl leading-none">The 90-second video is coming soon.</p>
+        <p class="sign text-2xl leading-none">The 30-second video is coming soon.</p>
         <p class="text-[0.95rem] text-[#c9d4e0]">For now, try the demo yourself. It's the same walkthrough.</p>
       </div>
     )
