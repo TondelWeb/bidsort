@@ -30,11 +30,19 @@ const src = `https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&tra
     const url = new URL(frame.dataset.tallySrc!);
     const source = new URLSearchParams(location.search).get('src');
     url.searchParams.set('source', source ?? 'direct');
-    frame.dataset.tallySrc = url.toString(); // Tally's script reads this attribute
-    frame.src = url.toString();
+    frame.dataset.tallySrc = url.toString(); // Tally's script loads the form from this attribute
+    const fallback = () => {
+      if (!frame.src) frame.src = url.toString(); // script blocked: load the form at a fixed height
+    };
     const s = document.createElement('script');
     s.src = 'https://tally.so/widgets/embed.js';
     s.async = true;
+    s.onload = () => {
+      const w = window as typeof window & { Tally?: { loadEmbeds: () => void } };
+      if (w.Tally) w.Tally.loadEmbeds();
+      else fallback();
+    };
+    s.onerror = fallback;
     document.body.appendChild(s);
   }
 </script>

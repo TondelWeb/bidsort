@@ -9,6 +9,6 @@ export const VIDEO_CAPTIONS = 'video/bidsort-30s.en.vtt';
 export const VIDEO_ID = '';
 
 // Tally form ID: the part after "tally.so/r/" in your form's share link, e.g. https://tally.so/r/wMdXyz
-export const TALLY_FORM_ID = '';
+export const TALLY_FORM_ID = 'X5ojOV';
 
 export const APP_NAME = 'BidSort';
